@@ -55,42 +55,62 @@ function RecordList({ records }) { // 대결 결과
 function App() {
   const [userInput, setUserInput] = useState('');
   const [records, setRecords] = useState([
-    { result: "무승부", user: "가위", computer: "가위" },
     { result: "무승부", user: "바위", computer: "바위" },
-    { result: "무승부", user: "보", computer: "보" },
-    { result: "승리", user: "가위", computer: "보" },
-    { result: "승리", user: "바위", computer: "가위" },
-    { result: "승리", user: "보", computer: "바위" },
+    { result: "승리", user: "보", computer: "가위" },
+    { result: "무승부", user: "바위", computer: "바위" },
+    { result: "패배", user: "가위", computer: "보" },
+    { result: "승리", user: "보", computer: "가위" },
+    { result: "패배", user: "가위", computer: "보" },
+    { result: "승리", user: "보", computer: "가위" },
+    { result: "무승부", user: "바위", computer: "바위" },
+    { result: "승리", user: "보", computer: "가위" },
+    { result: "패배", user: "가위", computer: "보" },
     { result: "패배", user: "가위", computer: "바위" },
-    { result: "패배", user: "바위", computer: "보" },
-    { result: "패배", user: "보", computer: "가위" },
+    { result: "무승부", user: "바위", computer: "바위" },
+    { result: "승리", user: "보", computer: "가위" },
+    { result: "패배", user: "가위", computer: "바위" },
+    { result: "승리", user: "보", computer: "가위" },
+    { result: "무승부", user: "바위", computer: "바위" },
+    { result: "패배", user: "가위", computer: "보" },
+    { result: "승리", user: "보", computer: "가위" },
+    { result: "무승부", user: "바위", computer: "바위" },
+    { result: "패배", user: "가위", computer: "바위" },
   ]);
-
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (userInput === '') {
-      alert('값을 입력하세요.(가위or바위or보)')
+    const rsp = {
+      가위: '가위',
+      바위: '바위',
+      보: '보'
+    }
+
+    // input 값이 빈 값이거나 || '가위','바위','보'가 아닌경우
+    if (userInput === '' || !rsp[userInput]) {
+      alert('값을 입력하세요.(가위or바위or보)');
+      setUserInput('');
       return
     }
 
-
     const computerInput = ['가위', '바위', '보'][Math.floor(Math.random() * 3)];
 
-    let result;
-    records.map((record) =>
-      record.user === userInput && record.computer === computerInput ?
-        result = record.result : null);
+    // let result;
+    // if (userInput === computerInput) {
+    //   result = '무승부';
+    // } else if ((userInput === '가위' && computerInput === '바위') ||
+    //   (userInput === '바위' && computerInput === '보') ||
+    //   (userInput === '보' && computerInput === '가위')) {
+    //   result = '패배';
+    // } else {
+    //   result = '승리';
+    // }
 
-    let message = `user: ${userInput} | computer: ${computerInput} | 결과: ${result}`;
-    if (result === "무승부") {
-      alert(message);
-    } else if (result === "승리") {
-      alert(message);
-    } else {
-      alert(message);
-    }
+    let result = userInput === computerInput ? '무승부' :
+      (userInput === '가위' && computerInput === '바위') ||
+        (userInput === '바위' && computerInput === '보') ||
+        (userInput === '보' && computerInput === '가위') ?
+        '패배' : '승리';
 
     setRecords([
       { // 새 항목 추가
@@ -100,6 +120,7 @@ function App() {
       },
       ...records// 기존 배열의 모든 항목에
     ])
+
     setUserInput('');
 
   }
