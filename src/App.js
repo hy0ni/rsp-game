@@ -95,22 +95,24 @@ function App() {
 
     const computerInput = ['가위', '바위', '보'][Math.floor(Math.random() * 3)];
 
-    // let result;
-    // if (userInput === computerInput) {
-    //   result = '무승부';
-    // } else if ((userInput === '가위' && computerInput === '바위') ||
-    //   (userInput === '바위' && computerInput === '보') ||
-    //   (userInput === '보' && computerInput === '가위')) {
-    //   result = '패배';
-    // } else {
-    //   result = '승리';
-    // }
+    let result;
+    let message = `user: ${userInput} | computer: ${computerInput} | 결과: ${result}`;
 
-    let result = userInput === computerInput ? '무승부' :
-      (userInput === '가위' && computerInput === '바위') ||
-        (userInput === '바위' && computerInput === '보') ||
-        (userInput === '보' && computerInput === '가위') ?
-        '패배' : '승리';
+    const loseRsp = [
+      '가위바위',
+      '바위보',
+      '보가위'
+    ]
+    if (userInput === computerInput) {
+      result = '무승부'
+      alert(message)
+    } else if (loseRsp.includes(userInput + computerInput)) {
+      result = '패배'
+      alert(message)
+    } else {
+      result = '승리'
+      alert(message)
+    }
 
     setRecords([
       { // 새 항목 추가
