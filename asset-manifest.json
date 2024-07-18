@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/rsp-game/static/css/main.60c90df4.css",
-    "main.js": "/rsp-game/static/js/main.59ef32e4.js",
+    "main.js": "/rsp-game/static/js/main.89f75762.js",
     "index.html": "/rsp-game/index.html",
     "main.60c90df4.css.map": "/rsp-game/static/css/main.60c90df4.css.map",
-    "main.59ef32e4.js.map": "/rsp-game/static/js/main.59ef32e4.js.map"
+    "main.89f75762.js.map": "/rsp-game/static/js/main.89f75762.js.map"
   },
   "entrypoints": [
     "static/css/main.60c90df4.css",
-    "static/js/main.59ef32e4.js"
+    "static/js/main.89f75762.js"
   ]
 }
